@@ -1,0 +1,26 @@
+Burpsuite is used for security testing, all types of security testing 
+opens by creating a project using defaults
+
+
+Below are the features that are to be used for the 
+
+Proxy: opens up the site in the Burpsuite browser.
+1.After opening the site in the browser, turn the intercept on.
+2.Click on any element in the site on the browser.
+3.The API request will be displayed in BURP before going to the server.
+4.Enter your own request headers or payloads.
+5.Then forward the request to the server and check the response.
+
+or drop the request totally user call.
+
+
+Repeater: Enter the complete  API request on the left side. This request will contain all the required request headers. On the response side the response is displayed.
+NOTE: Request headers go with the API request. like parameters in the API request. The payload goes into the body. 
+
+
+Target: Displays all the requests, with the latest on the top and then the request and the response of all individual requests. 
+This can show all the individual components of the requests that are in the request.
+NOTE: This will show all requests for all sites that are being hit in the burpsuite browser. it is upto the user to check the site, they want to visit.
+
+
+All other features use the above main features and are linked with the above main features.
