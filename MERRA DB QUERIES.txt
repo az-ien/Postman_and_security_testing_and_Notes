@@ -1,0 +1,177 @@
+scenarios:
+- no nulls in 2021 where data is in 2020
+- no large differences in 2021 and 2020
+- make 2020 as reference 
+- for comparison of hour temp and normal hour there should be no differences
+- for day calculate avg and then compare with 24 hours
+-total of days in month and then month query
+
+
+-----------------------SOLAR-------------------------
+
+Select * from merra_solar_hour_2021_temp where merra_id = 142389 and date_time BETWEEN '29-JAN-20 12.00.00.000000000 AM' AND '29-JAN-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_solar_hour_2020_temp where merra_id = 142389 and date_time BETWEEN '29-JAN-20 12.00.00.000000000 AM' AND '29-JAN-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_solar_hour_2021_temp where merra_id = 142389 and date_time BETWEEN '14-JUN-21 12.00.00.000000000 AM' AND '14-JUN-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_solar_hour_2020_temp where merra_id = 142389 and date_time BETWEEN '14-JUN-20 12.00.00.000000000 AM' AND '14-JUN-20 11.00.00.000000000 PM'   order by 2;
+
+DAY
+Select  SUM(SURFACE_ALBEDO), SUM(SURFACE_EMISSIVITY),SUM(SHORTWAVE_SURFACE), SUM(SHORTWAVE_TOA), AVG(CLOUD_COVER), AVG(PERCENT_SUNSHINE), AVG(SURFACE_ALBEDO), AVG(SURFACE_EMISSIVITY) from merra_solar_hour_2021 where merra_id = 149328 and date_time BETWEEN '25-JUN-21 12.00.00.000000000 AM' AND '25-JUN-21 11.00.00.000000000 PM';
+Select * from merra_solar_day_2021 where merra_id = 149328 AND DAY = '25-JUN-21';
+
+
+
+
+MONTH
+Select SUM(ALBEDO), SUM(EMISSIVITY),SUM(SHORTWAVE_SURFACE), SUM(SHORTWAVE_TOA), AVG(CLOUD_COVER_AVG), AVG(PERCENT_SUNSHINE_AVG), AVG(ALBEDO_AVG), AVG(EMISSIVITY_AVG) from merra_solar_day_2021 where merra_id = 141820 AND DAY like '%JAN%';
+
+Select * from merra_solar_month where merra_id = 141820 and year = 2021 AND MONTH = 1;
+
+
+
+YEAR
+
+Select SUM(ALBEDO), SUM(EMISSIVITY),AVG(SHORTWAVE_SURFACE),STDDEV(SHORTWAVE_SURFACE), SUM(SHORTWAVE_TOA), AVG(CLOUD_COVER_AVG), AVG(PERCENT_SUNSHINE_AVG), AVG(ALBEDO_AVG), AVG(EMISSIVITY_AVG) from merra_solar_month where merra_id = 141820 and year = 2021;
+
+Select * from merra_solar_year where merra_id = 141820 and year = 2021;
+
+-----------------------WIND-------------------------
+
+Select * from merra_wind_hour_2021_temp where merra_id = 137222 and date_time BETWEEN '4-AUG-21 12.00.00.000000000 AM' AND '4-AUG-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_wind_hour_2020_temp where merra_id = 137222 and date_time BETWEEN '4-AUG-20 12.00.00.000000000 AM' AND '4-AUG-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_wind_hour_2021_temp where merra_id = 137222 and date_time BETWEEN '12-NOV-21 12.00.00.000000000 AM' AND '12-NOV-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_wind_hour_2020_temp where merra_id = 137222 and date_time BETWEEN '12-NOV-20 12.00.00.000000000 AM' AND '12-NOV-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_wind_hour_2021_temp where merra_id = 137222 and date_time BETWEEN '12-JAN-21 12.00.00.000000000 AM' AND '12-JAN-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_wind_hour_2020_temp where merra_id = 137222 and date_time BETWEEN '12-JAN-20 12.00.00.000000000 AM' AND '12-JAN-20 11.00.00.000000000 PM'   order by 2;
+
+Select * from merra_wind_hour_2021_temp where merra_id = 137222 and date_time BETWEEN '12-NOV-21 12.00.00.000000000 AM' AND '12-NOV-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_wind_hour_2021 where merra_id = 137222 and date_time BETWEEN '12-NOV-21 12.00.00.000000000 AM' AND '12-NOV-21 11.00.00.000000000 PM'   order by 2;
+
+DAY
+Select  avg(WIND_VELOCITY), MAX(WIND_VELOCITY), MIN(WIND_VELOCITY), AVG(AIR_DENSITY) from merra_wind_hour_2021 where merra_id = 137222 and date_time BETWEEN '12-NOV-21 12.00.00.000000000 AM' AND '12-NOV-21 11.00.00.000000000 PM';
+Select * from merra_wind_day_2021 where merra_id = 137222 AND DAY = '12-NOV-21';
+
+
+MONTH
+
+
+Select avg(WIND_VELOCITY_AVG), MAX(WIND_VELOCITY_MAX), MIN(WIND_VELOCITY_MIN), AVG(AIR_DENSITY_AVG) from merra_WIND_day_2021 where merra_id = 137222 AND DAY like '%APR%';
+Select * from merra_WIND_month where merra_id = 137222 and year = 2021 AND MONTH = 4;
+
+
+
+YEAR (wind velocity has diff of 2)
+
+Select avg(WIND_VELOCITY_AVG), MAX(WIND_VELOCITY_MAX), MIN(WIND_VELOCITY_MIN), AVG(AVG_PWD) from merra_WIND_MONTH where merra_id = 137222 and year = 2021;
+Select * from merra_WIND_year where merra_id = 137222 and year = 2021;
+
+-----------------------TEMP-------------------------
+
+Select * from merra_temp_hour_2021_temp where merra_id = 140067 and date_time BETWEEN '25-JAN-21 12.00.00.000000000 AM' AND '25-JAN-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_temp_hour_2020_temp where merra_id = 140067 and date_time BETWEEN '25-JAN-20 12.00.00.000000000 AM' AND '25-JAN-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_temp_hour_2021_temp where merra_id = 140067 and date_time BETWEEN '1-JUL-21 12.00.00.000000000 AM' AND '1-JUL-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_temp_hour_2020_temp where merra_id = 140067 and date_time BETWEEN '1-JUL-20 12.00.00.000000000 AM' AND '1-JUL-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_temp_hour_2021_temp where merra_id = 140067 and date_time BETWEEN '18-MAR-21 12.00.00.000000000 AM' AND '18-MAR-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_temp_hour_2020_temp where merra_id = 140067 and date_time BETWEEN '18-MAR-20 12.00.00.000000000 AM' AND '18-MAR-20 11.00.00.000000000 PM'   order by 2;
+
+DAY
+Select AVG(TEMPERATURE), MAX(temperature), MIN(temperature), STDDEV(temperature), AVG(soil_temp_layer1), AVG(soil_temp_layer2), AVG(soil_temp_layer3), AVG(soil_temp_layer4), AVG(soil_temp_layer5), AVG(soil_temp_layer6), AVG(TEMP_UNSAT_ZONE), AVG(TEMP_SAT_ZONE)   from merra_temp_hour_2021 where merra_id = 137234 and date_time BETWEEN '7-OCT-21 12.00.00.000000000 AM' AND '7-OCT-21 11.00.00.000000000 PM';
+
+Select * from merra_TEMP_day_2021 where merra_id = 137234 AND DAY = '7-OCT-21';
+
+MONTH
+
+
+Select AVG(TEMP_AVG), MAX(temp_MAX), MIN(temp_MIN), STDDEV(temp_STDEV), AVG(soil_temp_layer1_avg), AVG(soil_temp_layer2_avg), AVG(soil_temp_layer3_avg), AVG(soil_temp_layer4_avg), AVG(soil_temp_layer5_avg), AVG(soil_temp_layer6_avg), AVG(TEMP_UNSAT_ZONE_avg), AVG(TEMP_SAT_ZONE_avg)   from merra_temp_DAY_2021 where merra_id = 134917 and DAY like '%OCT%';
+
+Select * from merra_TEMP_month where merra_id = 134917 and year = 2021 AND MONTH = 10;
+
+
+
+YEAR 
+
+
+Select AVG(TEMP_MEAN_AVG), MAX(temp_MAX),MIN(temp_MIN), STDDEV(temp_MEAN_STDEV), AVG(soil_temp_layer1_avg), AVG(soil_temp_layer2_avg), AVG(soil_temp_layer3_avg), AVG(soil_temp_layer4_avg), AVG(soil_temp_layer5_avg), AVG(soil_temp_layer6_avg), AVG(TEMP_UNSAT_ZONE_avg), AVG(TEMP_SAT_ZONE_avg)   from merra_temp_month  where merra_id = 137222 and year = 2021;
+
+Select * from merra_temp_year where merra_id = 137222 and year = 2021;
+
+
+
+
+-----------------------PERCIP-------------------------
+
+Select * from merra_precip_hour_2021_temp where merra_id = 152770 and date_time BETWEEN '1-MAR-21 12.00.00.000000000 AM' AND '1-MAR-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_precip_hour_2020_temp where merra_id = 152770 and date_time BETWEEN '1-MAR-20 12.00.00.000000000 AM' AND '1-MAR-20 11.00.00.000000000 PM'   order by 2;
+
+
+Select * from merra_precip_hour_2021_temp where merra_id = 152770 and date_time BETWEEN '14-OCT-21 12.00.00.000000000 AM' AND '14-OCT-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_precip_hour_2020_temp where merra_id = 152770 and date_time BETWEEN '14-OCT-20 12.00.00.000000000 AM' AND '14-OCT-20 11.00.00.000000000 PM'   order by 2;
+
+DAY
+Select SUM(PRECIPITATION), SUM(evaporation),SUM(INFiLTRATION),SUM(OVERLAND_RUNOFF),SUM(SNOWFALL),SUM(SNOW_MASS),SUM(SNOW_MELT) from merra_precip_hour_2021 where merra_id = 152770 and date_time BETWEEN '7-OCT-21 12.00.00.000000000 AM' AND '7-OCT-21 11.00.00.000000000 PM';
+
+Select * from merra_PRECIP_day_2021 where merra_id = 152770 AND DAY = '7-OCT-21';
+
+
+
+MONTH
+
+
+Select SUM(PRECIPITATION), SUM(evaporation),SUM(INFiLTRATION),SUM(RUNOFF),SUM(SNOWFALL),SUM(SNOW_MASS),SUM(SNOW_MELT) from merra_precip_day_2021 where merra_id = 138342 and day like '%AUG%'; 
+
+Select * from merra_PRECIP_month where merra_id = 138342 and year = 2021 AND MONTH = 8;
+
+
+
+
+
+YEAR
+Select SUM(PRECIPITATION) from merra_precip_month where merra_id = 138342 and year = 2021; 
+
+Select * from merra_PRECIP_year where merra_id = 138342 and year = 2021;
+
+-----------------------HUMIDITY-------------------------
+
+Select * from merra_humid_hour_2021_temp where merra_id = 138966 and date_time BETWEEN '19-MAY-21 12.00.00.000000000 AM' AND '19-MAY-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_humid_hour_2020_temp where merra_id = 138966 and date_time BETWEEN '19-MAY-20 12.00.00.000000000 AM' AND '19-MAY-20 11.00.00.000000000 PM'   order by 2;
+
+
+
+Select * from merra_humid_hour_2021_temp where merra_id = 138966 and date_time BETWEEN '29-SEP-21 12.00.00.000000000 AM' AND '29-SEP-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_humid_hour_2020_temp where merra_id = 138966 and date_time BETWEEN '29-SEP-20 12.00.00.000000000 AM' AND '29-SEP-20 11.00.00.000000000 PM'   order by 2;
+
+
+
+Select * from merra_humid_hour_2021_temp where merra_id = 138966 and date_time BETWEEN '29-SEP-21 12.00.00.000000000 AM' AND '29-SEP-21 11.00.00.000000000 PM'   order by 2;
+Select * from merra_humid_hour_2021 where merra_id = 138966 and date_time BETWEEN '29-SEP-21 12.00.00.000000000 AM' AND '29-SEP-21 11.00.00.000000000 PM'   order by 2;
+
+DAY
+Select AVG(RELATIVE_HUMIDITY), MAX(RELATIVE_HUMIDITY), MIN(RELATIVE_HUMIDITY), STDDEV(RELATIVE_HUMIDITY) from merra_humid_hour_2021 where merra_id = 138966 and date_time BETWEEN '7-FEB-21 12.00.00.000000000 AM' AND '7-FEB-21 11.00.00.000000000 PM';
+Select * from merra_HUMID_day_2021 where merra_id = 138966 AND DAY = '7-FEB-21';
+
+
+
+
+MONTH
+
+Select AVG(REL_HUM_AVG), MAX(REL_HUM_MAX), MIN(REL_HUM_MIN), STDDEV(REL_HUM_STDEV) from merra_humid_day_2021 where merra_id = 143015 and day like '%MAR%';
+
+Select * from merra_humid_month where merra_id = 143015 and year = 2021 AND MONTH = 3;
+
+
+
+
+YEAR
+
+Select AVG(REL_HUM_AVG), MAX(REL_HUM_MAX), MIN(REL_HUM_MIN), STDDEV(REL_HUM_STDEV) from merra_humid_day_2021 where merra_id = 143015;
+
+Select * from merra_humid_year where merra_id = 143015 and year = 2021;
