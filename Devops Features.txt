@@ -1,0 +1,41 @@
+Dev Ops Features that are currently in use:
+
+Overview
+1.Summary: contains a summary of the project.
+2.DashBoard: a summary of the prints in that project.
+3.Wiki: contians guides, steps or other important information that is relavent to the project.
+
+Boards
+1.Work Items: An unparented overall view of all user stories and bugs.
+2.Boards: Contains the status wise view of all the stories that are in the project.
+3.Backlogs: Contains a parent-child view of the Epics, Features, Stories, their tasks and the bugs with. them
+4.Sprints: Contains the view of all the view backlog items.
+5.Queires: Are used to get customized view of the backlog items for Alpha, Beta and Accptance Releases.
+6.Delivery plans: Used to create plans for released.(Not created currently)
+7.Analytics View: Analytics views lets the user create filtered views of simple Boards data for Power BI reporting.
+
+Repos
+1.Files: Contians the code files for the project.
+2.Changesets: Tracks the changes made by individual developers in the code files.
+3.Shelvesets: Code changes, revisions or comments that are saved by the individual developers.
+
+Pipelines
+1.Pipelines: Contains the CI/CD Pipelines for the project.
+2.Environments: The pipelines are divided into their respective environments like Dev, staging, Production.
+3.Releases: Shows the status of the deployments that are done on the specific environments.
+4.Library: Contains the assets or variables required for to run the pipelines
+5.Taskgroups: These contain tasks that are excuted in pipelines
+6.Deployment Groups: Contain the environments and the tasks which are defined in the pipelines
+
+
+Test plans
+1.Test plans: Contain the manual testcases that can be run on the project environment.
+2.Progress report: Contains the status of the testplans
+3.Parameters: Any variables that are required for the running of the testplans.
+4.Configurations: Contains the details of the browsers or system on which the Testplan is run.
+5.Runs: Contains the detials of the Testplan runs.
+
+
+
+Artifacts
+1.Artifacts: Azure Artifacts enables developers to efficiently manage package types, including NuGet, npm, Python, Maven, Cargo, and Universal Packages.
