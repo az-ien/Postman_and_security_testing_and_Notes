@@ -1,0 +1,13 @@
+convert hex to rgb and then use this code to check the where the color exists
+
+------------------Existing---------------------
+const target = 'rgb(0, 117, 218)'; 
+
+--------------------New-------------------------
+const target = 'rgb(0, 86, 179)'; // Note commas!
+document.querySelectorAll('*').forEach(el => {
+  const style = getComputedStyle(el);
+  if (style.color === target || style.backgroundColor === target) {
+    console.log('Found element:', el);
+  }
+});
