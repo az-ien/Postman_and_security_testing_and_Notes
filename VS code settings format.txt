@@ -1,0 +1,21 @@
+
+
+1. settings in VS can be displayed as in UI or .json file format
+2. convert the settings to .json and add below paramaters in settings 
+
+
+{
+    "files.autoSave": "afterDelay",
+    "jdk.jdkhome": "C:\\Program Files\\Java\\jdk-17",
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.settings.editor": "json",
+    "workbench.settings.useSplitJSON": true,
+    "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-17",
+   
+  // Disable Copilot entirely for all languages
+  "github.copilot.enable": {
+    "*": false
+  }
+
+    
+}
