@@ -1,6 +1,9 @@
 Selenium java:
 
 webelement Loc = driver.findElement(locator);
+Loc.size();
+
+
 'list' can have duplicates but 'set' cannot have duplicates in it. 
 
 differnece between:
