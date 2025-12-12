@@ -26,7 +26,7 @@ scenario 3: Locator Loc is not matching with any WebElements
 findElement(Loc)---->No such Element Exception
 findElements(Loc)---->returns 0 (duhhh !!!)but no exception so an empty list is created 
 
---------------------------------------------------------------------------------------------reading excel file---------------------------------------------
+-----------------------------------------------------------------------reading excel file---------------------------------------------
 
 Java provides these classes->
 FileInputStream - for reading any  file 
@@ -41,6 +41,24 @@ XSSFWorkBook
 XSSFSheet
 XSSFRow
 XSSFCell
+
+----------------------------------------------------------------------Data Providers---------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------Broken Links------------------------------------------------------
+
+1) link href="https://xyz.com" 
+2) https://xyz.com  --> hit the URL to the server --> get its status code
+3) status code>= broken links
+status code <400 not a broken link 
+
+
+
+
+
 
 
 
