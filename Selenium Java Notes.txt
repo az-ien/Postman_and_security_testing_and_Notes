@@ -26,7 +26,21 @@ scenario 3: Locator Loc is not matching with any WebElements
 findElement(Loc)---->No such Element Exception
 findElements(Loc)---->returns 0 (duhhh !!!)but no exception so an empty list is created 
 
+--------------------------------------------------------------------------------------------reading excel file---------------------------------------------
 
+Java provides these classes->
+FileInputStream - for reading any  file 
+FileOutSream - for writing any file 
+
+
+apache poi dependency -- classes that are needed specifically for excel file 
+
+excel file-->workbook-->Sheets-->Rows-->Cells
+
+XSSFWorkBook
+XSSFSheet
+XSSFRow
+XSSFCell
 
 
 
