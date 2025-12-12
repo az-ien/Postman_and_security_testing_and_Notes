@@ -1,0 +1,30 @@
+Selenium java:
+
+webelement Loc = driver.findElement(locator);
+
+differnece between:
+findElement(locator parameter)  --  returns single WebElement, stored in one WebElement variable
+findElements(locator parameter)  -- returns multiple WebElements, stored in WebElements list
+ 
+ 
+secnario 1: Locator Loc matching with single WebElement
+findElement(Loc)---->single WebElement  return type: WebElement
+findElements(Loc)---->single WebElement  return type: list<WebElements> 
+
+
+scenario 2: Locator Loc is matching with multiple WebElements
+findElement(Loc)---->first WebElement  return type: WebElement
+findElements(Loc)---->multiple all WebElements  return type: list<WebElements> 
+
+
+
+scenario 3: Locator Loc is not matching with any WebElements
+findElement(Loc)---->No such Element Exception
+findElements(Loc)---->returns 0 (duhhh !!!)but no exception so an empty list is created 
+
+
+
+
+
+
+
