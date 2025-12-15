@@ -42,12 +42,6 @@ XSSFSheet
 XSSFRow
 XSSFCell
 
-----------------------------------------------------------------------Data Providers---------------------------------------------------
-
-
-
-
-
 ---------------------------------------------------------------------Broken Links------------------------------------------------------
 
 1) link href="https://xyz.com" 
@@ -84,6 +78,19 @@ functional test group  --
 all login tests come under sanity
 all sign up tests come under regression
 all payment tests come under both
+
+--------------------------------------------------------------dataprovider----------------------------------------------------------------
+@dataProvider --- testmethod rquires test data: example login method for 2-3 users so one test but 3 user data
+this data method is the data provider. 5 times data then it will send data 5 times without loops which are used to pick data one by one in each iteration
+data is in the data provider method
+but if there is huge data then there should be an excel file then the data provider will read the excel file and store in 2D array and return that array to the test code 
+each row will go to 2D array then pass the array to the test method and it will run that as many times as there is data 
+which is actual data driven testing.
+
+
+
+
+-------------------------------------------------------parallel testing using xml file---------------------------------------------------
 
 
 
