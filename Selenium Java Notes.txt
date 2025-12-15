@@ -81,7 +81,9 @@ regression test group  -- m1,m3,m4
 functional test group  --
 
 
-
+all login tests come under sanity
+all sign up tests come under regression
+all payment tests come under both
 
 
 
