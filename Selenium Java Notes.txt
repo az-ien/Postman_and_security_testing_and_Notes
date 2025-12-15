@@ -56,7 +56,18 @@ XSSFCell
 status code <400 not a broken link 
 
 
+--------------------------------------------------------------dependency methods------search is depenedent on login, logout depenedent on search-----------------------------------------------------
 
+testng will execute test all test methods due to depeendency
+openapp
+login
+search
+advsearch
+logout
+
+if one of them fails then what ??? --if one test fails then why run others so unnecessary failed so stop testng from executing other tests 
+
+skip all depenedent methods 
 
 
 
