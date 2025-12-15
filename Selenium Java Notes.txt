@@ -69,6 +69,16 @@ if one of them fails then what ??? --if one test fails then why run others so un
 
 skip all depenedent methods 
 
+--------------------------------------------------------------grouping------------------------------------------------------------------
+
+class1 - m1 m2 m3
+class2 - m4 m5 m6
+clss3  - m7 m8 m9 
+
+
+sanity test group --  m2,m5,m7
+regression test group  -- m1,m3,m4 
+functional test group  --
 
 
 
