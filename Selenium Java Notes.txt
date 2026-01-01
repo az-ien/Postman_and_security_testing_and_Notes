@@ -1,5 +1,37 @@
 Selenium java:
 
+
+
+
+-----------------------------------------------------------WAITS---------------------------------------------------------------------------
+
+| Feature             | Implicit Wait               | Explicit Wait                           |                 |
+| ------------------- | --------------------------- | --------------------------------------- | --------------- |
+| Scope               | Global for whole driver     | Specific to an element/condition        |                 |
+| Use Case            | Basic delay for findElement | Wait for conditions (visible/clickable) |                 |
+| Precision           | Less precise                | Very precise                            |                 |
+| Requires Condition? | No                          | Yes (e.g., `visibilityOf`, `clickable`) | ([TestGrid][1]) |
+
+[1]: https://testgrid.io/blog/waits-in-selenium/?utm_source=chatgpt.com "Selenium Waits Tutorial: Implicit, Explicit, and Fluent Waits"
+
+
+// IMPLICIT WAIT -- wait up to 10 seconds for elements
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+// Now find elements normally
+driver.findElement(By.id("someElement")).click();
+
+
+// EXPLICIT WAIT -- wait up to 10 seconds for element to be clickable
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+WebElement button = wait.until(
+    ExpectedConditions.elementToBeClickable(By.id("loginButton"))
+);
+
+// now click when clickable
+button.click();
+
+--------------------------------------------------------element vs elments------------------------------------------------------------
 webelement Loc = driver.findElement(locator);
 Loc.size();
 
@@ -150,5 +182,6 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
