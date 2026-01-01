@@ -31,6 +31,31 @@ WebElement button = wait.until(
 // now click when clickable
 button.click();
 
+
+
+//Fluent wait -- handles more conditions, can ignore exceptions 
+
+| Feature                 | **Explicit Wait**      | **Fluent Wait**                               |                               |
+| ----------------------- | ---------------------- | --------------------------------------------- | ----------------------------- |
+| Based on                | WebDriverWait          | FluentWait                                    |                               |
+| Condition type          | Yes                    | Yes                                           |                               |
+| Custom polling interval | ❌ (fixed/default)      | ✔ (customizable)                              |                               |
+| Exception ignoring      | Limited                | ✔ Can configure which exceptions to ignore    |                               |
+| Flexibility             | Medium                 | High                                          |                               |
+| Use case                | Standard dynamic waits | Unpredictable load times & complex conditions | ([Test Automation Studio][1]) |
+
+[1]: https://www.testautomationstudio.com/blog/selenium/explicit-wait-vs-fluent-wait/?utm_source=chatgpt.com "Selenium - Explicit Wait vs Fluent Wait | Test Automation Studio : Selenium Blog"
+
+
+Wait<WebDriver> wait = new FluentWait<>(driver)
+      .withTimeout(Duration.ofSeconds(30))        // max wait time
+      .pollingEvery(Duration.ofSeconds(5))        // check every 5 seconds
+      .ignoring(NoSuchElementException.class);    // ignore this exception
+
+WebElement element = wait.until(
+    ExpectedConditions.visibilityOfElementLocated(By.id("someId"))
+);
+
 --------------------------------------------------------element vs elments------------------------------------------------------------
 webelement Loc = driver.findElement(locator);
 Loc.size();
@@ -182,6 +207,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
