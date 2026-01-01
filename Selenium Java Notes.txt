@@ -5,6 +5,16 @@ Selenium java:
 
 -----------------------------------------------------------WAITS---------------------------------------------------------------------------
 
+
+✔ Static Wait = wait exactly the time you give (like Thread.sleep()). 
+TutorialsPoint
+✔ Dynamic Wait = wait until a condition is met, up to a timeout, and stops early when possible (like Implicit/Explicit/Fluent Wait).
+
+Static wait: Stop and wait — always the same time.
+Dynamic wait: Wait until ready — stop early if possible.
+
+
+
 | Feature             | Implicit Wait               | Explicit Wait                           |                 |
 | ------------------- | --------------------------- | --------------------------------------- | --------------- |
 | Scope               | Global for whole driver     | Specific to an element/condition        |                 |
@@ -207,6 +217,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
