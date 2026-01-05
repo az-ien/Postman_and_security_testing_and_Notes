@@ -16,7 +16,8 @@ Inside that directory, you can run several commands:
     Runs the tests in debug mode.
 
   npx playwright codegen
-npx playwright codegen -o tests/codegentest.spec.ts // create a file with the name codegentest.spec.ts and save recorded code in it 
+npx playwright codegen -o tests/codegentest.spec.ts // create a file with the name codegentest.spec.ts and save recorded code in it
+npx playwright codegen -o tests/codegentest.spec.ts  --device "iPhone 14"    // device is adde, it will give a list if the wrong device is added
     Auto generate tests with Codegen.
 
 We suggest that you begin by typing:
@@ -29,3 +30,4 @@ And check out the following files:
 
 
 Visit https://playwright.dev/docs/intro for more information. ✨
+
