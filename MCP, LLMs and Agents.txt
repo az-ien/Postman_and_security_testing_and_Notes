@@ -1,0 +1,28 @@
+User-->prompt-->LLM-->agent-->MCP
+
+LLM:
+ChatGPT
+Google gemeni
+Claude
+deepseek
+
+prompts: instructions like text for process to start
+LLMS can: generate data but not perform actions 
+Agent: takes instructions from an LLM and performs real-world tasks using tools 
+MCP: Model Context protocol: is a framework that connects LLMs to browsers, databases, APIs
+it is a bridge between LLM and computer tools 
+
+MCP can: 
+1.perform browser automation like selenium MCP or Playwright MCP
+2.Connect to MySQL or PostgreSQL and perform queries using the MCPs of MySQL or PostgreSQL
+3.Send API requests
+
+Examples: 
+GitHub Copilot ---> helps to generate the code 
+
+
+Playwright MCP + GitHub Copilot
+----------------------
+1)VSCode
+2)GitHub Account 
+3)Playwright
