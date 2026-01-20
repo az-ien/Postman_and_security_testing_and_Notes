@@ -26,3 +26,6 @@ Playwright MCP + GitHub Copilot
 1)VSCode
 2)GitHub Account 
 3)Playwright
+
+Step1: Install Github Copilot extension
+Step2: playwright MCP server
