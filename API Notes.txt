@@ -1,0 +1,25 @@
+In One Line
+Idempotent: repeating the same request results in the same state.
+
+POST → Create a new resource (server picks ID), not idempotent.
+
+PUT → Update/replace a resource at a known URL, idempotent.
+
+
+
+POST /api/users
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+
+
+PUT /api/users/101
+Content-Type: application/json
+
+{
+  "name": "Alice Smith",
+  "email": "alice.smith@example.com"
+}
