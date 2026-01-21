@@ -27,5 +27,6 @@ Playwright MCP + GitHub Copilot
 2)GitHub Account 
 3)Playwright
 
-Step1: Install Github Copilot extension
-Step2: playwright MCP server
+Step1: Install Github Copilot extension -- for the code generation
+Step2: playwright MCP server -- for running the code 
+
