@@ -1,5 +1,21 @@
 Selenium java:
 
+-----------------------------------------------------------POM vs Page factory-----------------------------------------------------------
+
+In playwright there is no page factory only classes then their objects and calling those objects like normals classes
+The core difference is that the Page Object Model (POM) is a design pattern, while Page Factory is a built-in class provided by Selenium WebDriver to implement the POM pattern more efficiently.
+| Aspect                  | **POM (Page Object Model)**                                           | **Page Factory**                                                              |
+| ----------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Type**                | Design *pattern*                                                      | Selenium *implementation/helper* of POM                                       |
+| **Element Definition**  | Uses traditional locators like `driver.findElement(By...)` in methods | Uses `@FindBy` annotations on fields                                          |
+| **Initialization**      | Manual — you write code to locate elements                            | Automatic — PageFactory does it for you (`initElements`) ([GeeksforGeeks][1]) |
+| **Code Boilerplate**    | More — locators and initialization in methods                         | Less — cleaner code thanks to annotations                                     |
+| **Lazy Initialization** | ❌ Generally no lazy loading                                           | ✅ Elements are initialized only when used (lazy) ([GeeksforGeeks][1])         |
+| **Usage**               | Manual POM can be used in any framework                               | Page Factory is specific to Selenium and supports annotation usage            |
+
+[1]: https://www.geeksforgeeks.org/software-testing/page-object-model-and-page-factory-in-selenium-using-java/?utm_source=chatgpt.com "Page Object Model and Page Factory in Selenium Using Java - GeeksforGeeks"
+
+
 
 
 
@@ -217,6 +233,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
