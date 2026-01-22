@@ -1,8 +1,19 @@
 The term data-testid refers to a custom HTML attribute used by developers and QA teams to uniquely identify elements in a user interface (UI) specifically for automated software testing. 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The AAA (Arrange, Act, Assert) pattern is a common way of writing unit tests for a method under test. 
 The Arrange section of a unit test method initializes objects and sets the value of the data that is passed to the method under test. 
 The Act section invokes the method under test with the arranged parameters.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Git same branch, same files two devs conflict
+
+. Use VS Code’s Conflict Actions
+Within the file you’ll see special conflict areas with actions above each block:
+Accept Current Change — keep your (Developer 2’s) work
+Accept Incoming Change — keep Developer 1’s remote work
+Accept Both Changes — merge both sets (side by side)
+Compare Changes — see a side-by-side difference view
 
 
