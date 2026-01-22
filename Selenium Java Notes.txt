@@ -1,5 +1,17 @@
 Selenium java:
 
+differnece between playwright and selenium 
+
+👉 Selenium = Uses WebDriver — a separate bridge program that your automation talks to.
+👉 Playwright = No WebDriver — it talks directly to the browser through its own communication channel.
+
+Connection / Protocol
+
+🔹 Selenium: Uses WebDriver, a standardized protocol where each command (click, type, navigate) is sent over HTTP to a browser‑specific driver (like ChromeDriver). This provides wide support but adds overhead.
+🔹 Playwright: Does not depend on WebDriver. Instead, it talks directly to the browser engine using internal browser protocols like the DevTools Protocol (WebSocket‑based), giving more direct and efficient control.
+
+
+
 -----------------------------------------------------------POM vs Page factory-----------------------------------------------------------
 
 In playwright there is no page factory only classes then their objects and calling those objects like normals classes
@@ -233,6 +245,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
