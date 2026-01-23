@@ -1,0 +1,12 @@
+Preface: as I used to say “If a software tester crashes a program, it is a successful day for them. With app **** I had no unsuccessful days”.
+
+Start a program without internet connection. For some of them it is just enough.
+Go forward and backwards, backwards and forward from/to every screen. Repeat. I found many crashes in mobile apps using just this simple move.
+Move by different ways between screens and modes. Test items of different categories. For instance, try to search for products of various categories, in a native shop app. One app I tested could be crashed by searching for product of category Z and attempting to open its ordering page.
+Move through program in circles. For instance, you have a news client app. Search -> Open article -> Open relevant article -> Search again … … … . If the program can not free memory at some page, soon you will crash it.
+Refresh data. Try to leave app to “sleep” for some time, and then try to refresh data. Google, can you hear me? I crashed GMail mobile app many times on several smartphones just trying to refresh inbox. In fact so many times that I got tired of it and now checking my mail using Chrome only, not GMail app.
+Similar move: put that app to background for some time, than return and try to do something.
+Try to feed to program different input, variable and unexpected. One app was getting sort of integration with other app, a travel app. I created a travel without final date. Then the first app crashed every time I started it.
+Big files. One iPad app was often crashed when opening enormous JPEG — 7mb in size.
+Double tap / double click instead of single tap / click. Try it on different controls. It may crash app too.
+Software implementing Monkey testing . Apart from standard “monkeys” you can implement one yourself. I did it several times. There are several advantages of such random torturing of the program: it does random actions (including some you won’t do), it does many actions, it does not get tired and can work days and nights. Every monkey tool I used, standard or custom written by myself, found crashes and still does.

@@ -1,0 +1,93 @@
+Aspects of maven: 
+
+Build 
+Documentation 
+Reporting
+Relaese
+Districution
+Mailing list 
+SCMS
+Dependencies
+
+POM file is basically a unit of work in a project 
+It contains dependencies , plugins, profiles, developers and goals for a project
+It resides in the base folder of project as pom.xml
+Dependencies
+Plugins
+Goal
+Artifacts
+Versions
+Developers
+Build profiles 
+
+
+3 Build life cycles of maven 
+Clean -- Cleans up artifacts, Site -- generate site documentation  , Default -- build the appliance
+
+Phases of maven build life cycle 
+
+Validate 
+Compile 
+Test
+Package
+Integration test
+Verify 
+Install 
+Deploy
+
+------------
+
+
+Maven is build management tool that provides developers a complete life cycle of build and manage that build 
+
+Aspects of maven :
+Build 
+Documentation 
+Reporting 
+Dependencies 
+Release
+SCMS
+Distribution
+Mailiing list 
+
+Build life cycle of maven: 
+Clear -- Clear the artifacts 
+Site -- Generate the documentation 
+Default -- Build the application 
+
+POM is basically page object model is an .xml file that contains all the dependencies, artifacts of project 
+It Contains: 
+
+Dependencies 
+Plugins
+Artifacts
+Gooal
+Project version 
+Build Info 
+Developers 
+
+Maven artifact is basically a file which is .jarfile contains the information about the domain used for build purpose 
+
+There are 3 types of maven repositories :
+Local Repo 
+Central Repo 
+Remote Repo 
+
+
+Build phase in maven: 
+
+Validate 
+Compile 
+Test 
+package
+intgration test
+install 
+deploy 
+verify 
+
+src\main\java 
+test\src\main\test
+
+Find class file in : 
+target\classes
+

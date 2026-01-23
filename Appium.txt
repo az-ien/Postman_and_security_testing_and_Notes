@@ -1,0 +1,69 @@
+Appium: 
+Appium is used to automate mobile testing. It can be integrated with selenium webdriver. 
+
+Why appium: 
+It is an open source . 
+It supports selenium as a native configurations 
+it can be used on multiple browsers . 
+It supports android/IOS apps as well as native and hybrid apps 
+
+
+Setting up appium: 
+
+Android sdk
+Eclips sdk
+Java sdk
+Selenium standalone
+Testng
+Web driver library
+apk app info on google
+
+
+Advantages:
+
+1. It can support multiple languages (Java,python, .net)
+2. It supports both ios and androird apk
+3. Multiple browsers. 
+4. Multiple lanuguages
+5. Open source
+6. Not depenedetn on mobile device 
+7. Does not require modification on apps 
+
+Limitation:
+
+1. Cannot test below 4.2 android
+2. Little support for hybrid apps 
+3. Cannot run appium inspector on windows 
+
+Always prefer to use real devices and the chances of getting any real time error is more on real time devices but we can also configure the emulator 
+with succh cofigurations to handle that scenario
+
+Appium will not support any direct framework 
+Can use selenium webdriver
+Nunit 
+
+
+Essentials for writing appium test case:
+
+Driver
+Session 
+capabilities
+Commands
+
+UIautomateviewer is used for Xpath 
+
+Appium inspector is a recording tool just like Selenium ide
+
+Debug failure :
+
+Can be used proxy componenets to add break points 
+
+Selenium commands:
+
+.clikc()
+Type()
+Get/Setting
+<iFrames>
+
+No we dont need a server to run tests on appium . 
+Test node connects with server running appium carries out automation 
