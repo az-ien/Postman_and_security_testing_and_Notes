@@ -17,3 +17,623 @@ Accept Both Changes — merge both sets (side by side)
 Compare Changes — see a side-by-side difference view
 
 
+
+bug priority
+bug severity
+
+STLC
+Requirement & design review
+Test Planning
+Test Design
+Test environment setup
+Test execution
+Test Reporting
+
+verification: complinace of the processing
+validation: is the product according to the requirements
+
+
+
+------------------------------------------------------------------TESTNG CI/CD--------------------------------------------------------------------
+yaml file -> pom.xml-> testng.xml -> tests 
+junit surefire test report 
+
+static class only accessed by class name no objects created and cannot be inherited
+
+
+constructor allocates memory for class auto called when object is created
+types of constructors ??
+
+
+
+container used for making multiple copies = vm 
+cubenatrix same as cloud that makes more containers and removes containers like cloud does with resources
+docker company created the containers
+
+
+
+TESTNG.XML:
+
+<suite name="CISuite" parallel="classes" thread-count="4">
+  <parameter name="env" value="ci"/>
+  <test name="CI-Tests">
+    <groups>
+      <run>
+        <include name="ci"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.example.tests.LoginTest"/>
+      <class name="com.example.tests.DashboardTest"/>
+      <class name="com.example.tests.ApiSmokeTest"/>
+    </classes>
+  </test>
+</suite>
+
+POM:
+
+ <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>3.1.2</version>
+      <configuration>
+        <suiteXmlFiles>
+          <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+        </suiteXmlFiles>
+      </configuration>
+    </plugin>
+	
+	
+	
+YAML:
+trigger:
+  branches:
+    include: [ main ]
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: Maven@3
+    displayName: 'Run TestNG Tests'
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: 'test'
+      options: '-Dsurefire.suiteXmlFiles=src/test/resources/testng.xml'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    continueOnError: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Test Reports'
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)/target/surefire-reports'
+      ArtifactName: 'TestNG-Reports'
+
+
+-----------------------------------------------------------------------------------------BASIC PROGRAMMING--------------------------------------------------------------------------
+HOW TO BUILD LOGIC
+
+1. Visualize what needs to be done
+2. Dry run by imagining what will happen 
+3. Use code to actually perform that thing happening
+
+
+Example: what to do with a string
+1.move in which direction. whether by making a choice or moving or passing
+2.pick if any variables, value or data need to be picked
+3. perform action on that picked data 
+4.and show result 
+
+Then put all of the above in code language
+
+
+USE DEBUGGER: PUT BREAK POINTS AND THEN RUN IN DEBUG MODE WITH F8
+
+
+----------------------------------------------------------------------------------------------------SQL----------------------------------------------------------------------------------
+
+
+sql joins, primary key , composite key, unique key 
+
+right outer join and the right join will bring the same result come and data from the right table 
+left outer join and the left join will bring the same result come and data from the left table
+
+
+Q-34. Write an SQL query to determine the 5th highest salary without using the TOP or limit method.
+SELECT Salary FROM Worker W1 WHERE 5 = (SELECT COUNT(DISTINCT W2.Salary) FROM Worker W2 WHERE W2.Salary >= W1.Salary);
+
+
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+
+Primary key will not accept NULL values whereas Unique key can accept one NULL value.
+A table can have only primary key whereas there can be multiple unique key on a table.
+
+store procedure = combination of queries given one name and then that name is called
+views = results of some table are stored and then the views are called
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------LOCATORS--------------------------------------------------------------------------------
+
+aboslute xpath starts from root and goes to that element
+
+
+//tag name[@attribute='value']    
+absolute xpath     /      --> //*[@id='']/ul/li/a
+realtive xpath     //     --> //*[@id='']//a 
+
+
+      
+
+tag = what is the element in the DOM 
+attribute =  by which to find
+value= what to send
+
+for each test case this will be feature wise login seperately goto that specific feature and run test case
+lambda sign: '=>' used to get element (using xpath) and keep in an object waiting to be used only when accessed 
+static metods do not requie class obj to be called. without creating objects call the objects
+
+
+Selenium provides us eight types of locators or Identifiers which are as follows:
+Id.
+Name.
+Class Name.
+Tag Name.
+Link Text.
+Partial Link Text.
+CSS.
+XPath.
+
+
+
+//*[@type='submit' or @name='btnReset']
+//*[contains(@id,'message')]
+//*[contains(text(),'here')]
+//*[contains(@href,'guru99.com')]	
+//input[@type='text']				
+//label[@id='message23']
+//input[@value='RESET']
+//*[@class='barone']
+//a[@href='http://demo.guru99.com/']
+//img[@src='//cdn.guru99.com/images/home/java.png']
+(//li[@data-raw-value='0'])[1]
+//div[@id='JTree_Traffic']//a//ins[@class='jstree-checkbox']
+
+
+
+//div[@id='JTree_Traffic']//a//ins[@class='jstree-checkbox']
+
+Three elements in one Relative Xpath
+//div[@id='JTree_Traffic'] --- First element
+//a ----second element
+//ins[@class='jstree-checkbox'] --- Third element 
+
+
+TO USE LOCATORS W/ POM model
+
+OR_FILE: obejct for webelement or list<webelement> created 
+    @FindBy (how = How.LINK_TEXT, using = "Traffic")
+    public WebElement btnTraffic;
+	
+PAGE FILE: object called in method to perform some action
+
+ CommonMethods.ClickButton(this.driver, this.orDataSelection.btnTraffic);
+    
+
+
+
+--------------------------------------------------------------------------ASSERTS--------------------------------------------------------------------------------
+
+
+assert on fail stops test
+verify on fail keeps the test running
+
+Assert.assertEquals(actual,expected);
+Assert.assertNotEquals(actual,expected,Message);
+Assert.assertTrue(condition);
+Assert.assertFalse(condition);
+
+
+
+EXAMPLE::::
+TestNG: assertEquals(Object actual, Object expected)
+
+junit: assertEquals(Object expected, Object actual)
+
+Eg., in testNG result of below code
+
+int x=1+2;
+assertEquals(x,2);
+
+is:
+
+java.lang.AssertionError: expected [2] but found [3]
+Expected :2
+Actual   :3
+
+
+List<WebElement> items = driver.findElements(By.className("item"));
+
+for (WebElement item : items) {
+    if (item.getText().equals("Item 3")) {
+        item.click(); // Click the matching element
+        break;        // Exit the loop after clicking
+    }
+}
+
+
+-------------------------------------------------------------------------------OOP--------------------------------------------------------------------------------
+
+A method is on an object.
+A function is independent of an object.
+
+When the method signature (name and parameters) are the same in the superclass and the child class, it's called overriding. 
+When two or more methods in the same class have the same name but different parameters, it's called overloading.
+
+
+In method overloading, more than one method shares the same method name with a different signature in the  same class
+In method overriding, the derived class provides the specific implementation of the method that is already provided by the base class or parent class
+
+Overloading is when you have multiple methods in the same class, with the same name but different signatures.
+Overridding is when you have the same method in a child class 
+
+
+
+
+public class Sum {
+
+	// Overloaded sum(). This sum takes two int parameters
+	public int sum(int x, int y)
+	{
+		return (x + y);
+	}
+
+	// Overloaded sum(). This sum takes three int parameters
+	public int sum(int x, int y, int z)
+	{
+		return (x + y + z);
+	}
+
+	// Overloaded sum(). This sum takes two double parameters
+	public double sum(double x, double y)
+	{
+		return (x + y);
+	}
+	
+	// Overloaded sum(). This sum takes String
+	public String sum(String a)
+	{
+	  return(a);
+	}
+	
+
+	// Driver code
+	public static void main(String args[])
+	{
+		Sum s = new Sum();
+		System.out.println(s.sum(10, 20));
+		System.out.println(s.sum(10, 20, 30));
+		System.out.println(s.sum(10.5, 20.5));
+		System.out.println(s.sum("HELLO"));
+		
+	}
+}
+
+Output :
+
+30
+60
+31.0
+HELLO
+
+
+Overloading happens at compile-time while Overriding happens at runtime: 
+
+
+NOTE: if overridden methods are not found then obviously error will be there
+
+EXAMPLE: 
+
+
+// Base Class
+class Parent {
+	void show()
+	{
+		System.out.println("Parent's show()");
+	}
+}
+
+// Inherited class
+class Child extends Parent {
+	// This method overrides show() of Parent
+	@Override
+	void show()
+	{
+		System.out.println("Child's show()");
+	}
+}
+
+// Driver class
+class Main {
+	public static void main(String[] args)
+	{
+	    // this will over ride the parents show as at runtime this is the first to be created
+		Child obj3 = new Child();   
+		obj3.show();
+		
+		Parent obj1 = new Parent();
+		obj1.show();
+
+		// POLYMORPHISM.
+		Parent obj2 = new Child();
+		obj2.show();
+	}
+}
+
+Output:
+
+Child's show()
+Parent's show()
+Child's show()
+
+
+
+
+
+INHERITANCE 
+
+It is basically applied to classes.
+new class is created (derived class) that inherits the features from the already existing class(Base class).
+
+
+POLYMORPHISM
+
+Whereas it is basically applied to functions or methods.
+Polymorphism allows the object to decide which form of the function to implement at compile-time (overloading) as well as run-time (overriding).
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+access modifiers
+
+Private: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.create public method of same class then access that var in that method
+Default: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+Protected: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+
+
+
+
+
+class has at least one pure virtual function, then the class becomes abstract. 
+Unlike C++, in Java, a separate keyword abstract is used to make a class abstract.
+
+
+
+Abstract class (0 to 100% of abstract methods) cannot be instantiated access through child class objects
+Interface (100% of abstract methods)
+
+final methods (methods that cannot be overridden)
+abstract and virtual functions are the same 
+
+interfaces can only be used for implementation
+abstract classes are multiple inherited using overloading and overriding  
+polymorphism
+
+you cannot instantiate an abstract class.
+when object created then constructor is auto called
+
+
+
+even if object is of child class then the constructor will be called of abstract class
+
+abstract class Base { 
+    Base() { System.out.println("Base Constructor Called"); } 
+    abstract void fun(); 
+} 
+class Derived extends Base { 
+    Derived() { System.out.println("Derived Constructor Called"); } 
+    void fun() { System.out.println("Derived fun() called"); } 
+}
+class Main { 
+    public static void main(String args[]) {  
+
+        Base b = new Derived(); 
+        b.fun();  
+		
+		
+		Derived d = new Derived(); 
+		d.fun();
+    } 
+} 
+
+
+
+
+// C++ program to demonstrate private 
+// access modifier 
+
+#include<iostream> 
+using namespace std; 
+
+class Circle 
+{ 
+	private: 
+		double radius; 
+		 
+	public:	 
+		void compute_area(double r) 
+		{ 
+			radius = r; 			
+			double area = 3.14*radius*radius; 			
+			cout << "Radius is: " << radius << endl; 
+			cout << "Area is: " << area; 
+		} 
+	
+}; 
+
+// main function 
+int main() 
+{ 
+
+	Circle obj; 
+	obj.compute_area(1.5); 
+		
+	return 0; 
+} 
+
+
+
+
+
+RECURSION
+
+void printFun(int test) 
+{ 
+    if (test < 1) 
+        return; 
+    else
+    { 
+        cout << test << " "; 
+        printFun(test-1);    // statement 2 
+        cout << test << " "; 
+        return; 
+    } 
+} 
+  
+int main() 
+{ 
+    int test = 3; 
+    printFun(test); 
+} 
+
+-----------------------------------------------------------------------------WAITS---------------------------------------------------------------------------------
+
+
+           JavaScriptExecutor js = (JavaScriptExecutor)d
+          js.executeScript ( “JavaSript code” ,WebElement reference );
+
+implicit wait:
+driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+
+Explicit wait: (the time is there to stop an indefinite wait)
+WebDriverWait wait = new WebDriverWait(driver, 15);
+wait.until(ExpectedConditions.elementToBeClickable(...));
+
+
+
+-----------------------------------------------------------------------------PAGE FACTORY de---------------------------------------------------------------------------------
+
+Page factory:
+
+OR class(object repository)  --> Pages class (contains the actions on the objects)  
+--> Tests (Uses the action methods in pages in tests)
+--> webdriver initialized in tests (ur call either in constructor of test class or individual tests) 
+--> driver object in pages constructor 
+--> driver object in object repository constructor
+
+1. all connected by web dirver instance in constructors
+2. methods only called and objects passed in pages basic method implementation is in helper class
+3. create object repository, pages, and then testcases
+4. Try (code) Catch (only exception) Finally (run in all cases)
+5. apply breakpoint and then use that always debug 
+6. all pages are linked through the driver passing to different classed where ever the driver is needed 
+
+
+(use this to import all libraries for key words, any selenium thing that is required)
+import org.openqa.selenium.support.
+
+
+
+//objects class no need for webdriver here 
+
+package com.iengineering.ltppinfopave.objects;
+public class OR_Home {
+
+}
+
+
+// pages class linked through the constructor 
+
+package com.iengineering.ltppinfopave.pages;
+import com.iengineering.ltppinfopave.objects.OR_Home;
+
+public class Home {
+    public WebDriver driver;
+    OR_Home orHome = null;
+
+    public Home(WebDriver driver)
+    {
+        this.driver = driver;
+        this.orHome = PageFactory.initElements(this.driver, OR_Home.class);
+    }
+
+}
+
+// tests class
+// in the object instance need to send the driver
+
+import com.iengineering.ltppinfopave.pages.Home;
+public class MenuTest {
+    
+	private WebDriver driver;
+    private HomePage home;
+	
+	@Test
+    public void getstarted() //the actual test 
+	{
+	ApplicationSetup applicationsetup = new ApplicationSetup(this.driver);    // needs to pass the driver to the application setup class 
+        this.driver = applicationsetup.NavigateApplication("dev", "Chrome", strProject)   // after driver is passed then get variables from the application setup class and pass those variables in the driver
+	 Home home = new Home(this.driver); // create the object for the page class and pass the driver 
+	 
+	Assert.assertTrue(home.isDataPresent());
+	
+	}
+
+			
+-------------------------------------------------------------------------------------API--------------------------------------------------------------------
+
+WSDL/JSON  --> API communication language can send multiple informations anything any tags
+
+GET, POST only requests
+
+In REST each unique URL is a representation of some object. This can be modified via HTTP GET, POST, PUT,DELETE.
+RESTful web services, communicate via HTTP.
+SOAP is used in combination with WSDL and XML Schema to provide web services over the Internet
+
+With SOAP you are confined to XML only. With REST you have option to generate XML or JSON.
+
+JSON data is made of:
+Objects: Encapsulated in { }, containing name/value pairs:
+
+json
+{"firstName":"John", "lastName":"Doe"}
+Arrays: Encapsulated in [ ], containing ordered values:
+
+json
+["apple", "banana", "cherry"]
+
+website- > all data entry and data processing is done on website 
+Portal -> data request sent to server and all processing is done on server
+			
+			
+			
+			
