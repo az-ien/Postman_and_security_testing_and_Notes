@@ -10,9 +10,21 @@ Connection / Protocol
 🔹 Selenium: Uses WebDriver, a standardized protocol where each command (click, type, navigate) is sent over HTTP to a browser‑specific driver (like ChromeDriver). This provides wide support but adds overhead.
 🔹 Playwright: Does not depend on WebDriver. Instead, it talks directly to the browser engine using internal browser protocols like the DevTools Protocol (WebSocket‑based), giving more direct and efficient control.
 
+---------------------------------------------------------------------------JS Executor vs Actions class------------------------------------------------------------------------------------
+
+JavaScriptExecutor
+
+Runs raw JavaScript inside the browser.
+Great for things like: scroll the page, force a click, read or modify the DOM when WebDriver can’t.
+Useful when elements are hidden, behind overlays, or when standard commands don’t work.
+
+🖱️ Actions
+
+Simulates real user interactions (mouse/keyboard), such as hover, move, drag‑and‑drop, click after moving to element.
+Useful when simple click() fails because the element needs to be hovered or focused first.
 
 
------------------------------------------------------------POM vs Page factory-----------------------------------------------------------
+-----------------------------------------------------------------------------------POM vs Page factory--------------------------------------------------------------------------------
 
 In playwright there is no page factory only classes then their objects and calling those objects like normals classes
 The core difference is that the Page Object Model (POM) is a design pattern, while Page Factory is a built-in class provided by Selenium WebDriver to implement the POM pattern more efficiently.
@@ -245,6 +257,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
