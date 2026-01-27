@@ -32,6 +32,25 @@ Test Reporting
 verification: complinace of the processing
 validation: is the product according to the requirements
 
+----------------------------------------------------------------------------------browser arguments that are set when web driver is opened----------------------------------------------
+
+
+chrome_options.add_argument("about:blank")                    # Open blank page
+chrome_options.add_argument("--headless")                     # Run without UI (headless)
+chrome_options.add_argument("--disable-gpu")                   # Disable GPU (good with headless)
+chrome_options.add_argument("--start-maximized")               # Maximize window on start
+chrome_options.add_argument("--window-size=1200,800")          # Set custom window size
+chrome_options.add_argument("--incognito")                     # Launch in Incognito
+chrome_options.add_argument("--disable-extensions")            # Turn off all extensions
+chrome_options.add_argument("--disable-notifications")         # Suppress notifications
+chrome_options.add_argument("--disable-popup-blocking")        # Allow popups
+chrome_options.add_argument("--ignore-certificate-errors")     # Ignore SSL cert errors
+chrome_options.add_argument("--no-sandbox")                    # Disable Chrome sandbox
+chrome_options.add_argument("--disable-dev-shm-usage")         # Avoid /dev/shm issues (e.g., Docker)
+chrome_options.add_argument("--user-data-dir=/path/to/profile")# Use custom user data/profile
+chrome_options.add_argument("--profile-directory=Profile 1")    # Choose specific profile inside user-data-dir
+chrome_options.add_argument("--remote-debugging-port=9222")     # Enable remote debug port
+
 
 
 ------------------------------------------------------------------TESTNG CI/CD--------------------------------------------------------------------
@@ -637,3 +656,4 @@ Portal -> data request sent to server and all processing is done on server
 			
 			
 			
+
