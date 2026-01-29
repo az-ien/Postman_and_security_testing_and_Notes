@@ -1,0 +1,67 @@
+POM FILE:
+
+
+
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>5.3.1</version>
+</dependency>
+
+
+
+
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20230618</version>
+</dependency>
+
+
+--------------------------------------------
+
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.apache.http.entity.ContentType;
+import org.json.JSONObject;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class APITests {
+
+    @Test
+ void test1()
+    {
+
+        //Payload as a JSON Object
+        JSONObject payload = new JSONObject();
+        payload.put("PageNumber", "12");
+        payload.put("PageSize", "25");
+        payload.put("SortOrder", "desc");
+        payload.put("SortIndex", "");
+        payload.put("IsFilterApplied", "false");
+        payload.put("SelectedFilters", "null");
+        payload.put("AlphaSelected", "");
+        payload.put("InnerSearch", "");
+
+
+        // the request
+        Response response = RestAssured.given()
+                .contentType(String.valueOf(ContentType.APPLICATION_JSON))
+                .body(payload)
+                .when()
+                .post("https://infopave.fhwa.dot.gov/MnROAD/GetCategoryGridContent");
+
+
+        //test and responses
+        System.out.println("Response :" + response.asString());
+        System.out.println("Status Code:" + response.getStatusCode());
+        System.out.println("Time taken :"+ response.getTime());
+        System.out.println("The Body of the response :" + response.getBody());
+
+
+        Assert.assertEquals(response.getStatusCode(), 302);
+    }
+
+}
