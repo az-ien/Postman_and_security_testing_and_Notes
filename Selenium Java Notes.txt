@@ -1,3 +1,10 @@
+--------------------------------------------------------------------------------running testng.xml files in vscode-----------------------------------------------------------------------
+add any .xml file in the POM file 
+run the command mvn clean test to run the .xml which will run the tests
+
+
+
+--------------------------------------------------------------------------------selenium vs playwright-------------------------------------------------------------------------------------
 Selenium java:
 
 differnece between playwright and selenium 
@@ -257,6 +264,7 @@ default: System.out.line("Invalid Browser"); return; // return will exit from th
 
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 }
+
 
 
 
