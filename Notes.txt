@@ -16,7 +16,11 @@ Accept Incoming Change — keep Developer 1’s remote work
 Accept Both Changes — merge both sets (side by side)
 Compare Changes — see a side-by-side difference view
 
+Fork → a remote copy of someone else’s repository created under your own GitHub account. Used especially when you want to contribute to an open-source project but don’t have write access.
+Clone → a local copy of a repository that you download to your computer (or server) using git clone. It lives on your machine and lets you work on the code locally.
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 bug priority
 bug severity
@@ -656,4 +660,5 @@ Portal -> data request sent to server and all processing is done on server
 			
 			
 			
+
 
