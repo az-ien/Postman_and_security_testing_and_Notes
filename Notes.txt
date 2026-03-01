@@ -19,6 +19,36 @@ Compare Changes — see a side-by-side difference view
 Fork → a remote copy of someone else’s repository created under your own GitHub account. Used especially when you want to contribute to an open-source project but don’t have write access.
 Clone → a local copy of a repository that you download to your computer (or server) using git clone. It lives on your machine and lets you work on the code locally.
 
+MERGE:
+Before:
+
+main:   A — B — C
+                  \
+feature:           D — E
+
+After `git merge feature` into main:
+
+main:   A — B — C — F
+                    / \
+feature:           D — E
+
+F = new “merge commit” connecting both histories
+
+
+
+REBASE:
+Before:
+
+main:   A — B — C
+                  \
+feature:           D — E
+
+After `git rebase main` while on feature:
+
+main:   A — B — C — D′ — E′
+
+(commits D′ and E′ are *new versions* of D and E)
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -660,5 +690,6 @@ Portal -> data request sent to server and all processing is done on server
 			
 			
 			
+
 
 
