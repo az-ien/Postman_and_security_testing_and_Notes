@@ -6,7 +6,6 @@ Comprehensive collection of API testing configurations, security testing documen
 
 ### API Testing
 - **Postman Collections** - Multiple Postman collection files for API testing workflows
-- **MERRA HCD FILE API** - Production API configuration for testing
 - **My API Chaining** - API chaining examples and patterns
 
 ### Security Testing
