@@ -209,7 +209,9 @@ LIMIT 3;
 
 -------SUBQUERY------
 
-SUBQUERY = "I need an answer first."
+SUBQUERY = FIND → OUTER QUERY = USE
+
+
 
 Question:
 "Who earns more than the average?"
