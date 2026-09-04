@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------SQL QUERY WRITING LOGIC-----------------------------------------------------------------
+Think:
+
+SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY
+
+And remember what each one does:
+
+WHAT → WHERE → FILTER → GROUP → FILTER GROUPS → SORT
+
+
 WHAT do I want?        → SELECT
 WHERE is the data?     → FROM
 WHICH ROWS count?      → WHERE
