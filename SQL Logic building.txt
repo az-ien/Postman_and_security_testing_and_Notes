@@ -207,10 +207,25 @@ LIMIT 3;
 
 
 
--------SUBQUERY------
+--------------------------SUBQUERY--------------------------
 
 SUBQUERY = FIND → OUTER QUERY = USE
 
+
+
+So when you see a subquery problem:
+
+1. What do I need to FIND first?
+↓
+2. Write that as the subquery
+↓
+3. Put it in ( )
+↓
+4. USE its result in the outer query
+
+One caveat: some advanced problems use correlated subqueries, EXISTS, IN, ANY/ALL, etc. But even there, the core idea remains:
+
+FIND something → USE that result to solve the main query.
 
 
 Question:
@@ -221,27 +236,6 @@ Question:
 FIRST → What is the average?
         ↓
 SECOND → Who is above that average?
-
-
-
-example:
-
-DO I need to find something FIRST?
-→ SUBQUERY
-
-WHY?
-→ The main query needs the result of another query.
-
-HOW?
-→ Put a SELECT inside another SELECT/WHERE/etc.
-
-Example:
-"Customers who spent more than the average"
-
-FIRST → Calculate average spending
-       ↓
-THEN  → Find customers above that number
-
 
 
 
@@ -261,8 +255,9 @@ MAIN QUERY
           ↓
       Sara, Mike
 
-the result:
 
+
+the result:
 SELECT name, total_spent
 FROM customers
 WHERE total_spent > (
