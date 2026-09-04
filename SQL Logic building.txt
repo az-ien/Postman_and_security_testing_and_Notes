@@ -1,0 +1,224 @@
+--------------SQL QUERY WRITING LOGIC-------------------
+
+SELECT    → What do I want to see?
+FROM      → Where is the data?
+WHERE     → Which rows do I want?
+GROUP BY  → How do I want to group them?
+HAVING    → Which groups do I want?
+ORDER BY  → How should the result be sorted?
+
+
+------------------------------The logic--------------------------------
+WHAT do I want?        → SELECT
+WHERE is the data?     → FROM
+WHICH ROWS count?      → WHERE
+HOW to group?          → GROUP BY
+WHICH GROUPS count?    → HAVING
+HOW to sort?           → ORDER BY
+HOW MANY?              → LIMIT
+
+
+
+“Give me the top 3 departments whose average salary is above 5000, considering only employees earning more than 3000, with the highest average salary first.”
+
+WHAT do I want?
+→ Department + average salary
+→ SELECT department, AVG(salary)
+
+
+WHERE is the data?
+→ employees table
+→ FROM employees
+
+
+WHICH employees count?
+→ Salary > 3000
+→ WHERE salary > 3000
+
+
+HOW do I group them?
+→ By department
+→ GROUP BY department
+
+
+WHICH departments count?
+→ Average salary > 5000
+→ HAVING AVG(salary) > 5000
+
+
+HOW do I sort?
+→ Highest average salary first
+→ ORDER BY AVG(salary) DESC
+
+
+HOW MANY?
+→ Top 3
+→ LIMIT 3
+
+
+The result: 
+
+SELECT department, AVG(salary)
+FROM employees
+WHERE salary > 3000
+GROUP BY department
+HAVING AVG(salary) > 5000
+ORDER BY AVG(salary) DESC
+LIMIT 3;
+
+
+
+
+-----------------------------Expanding the same logic--------------------------------
+
+
+┌────────────────────────────────────────────┐
+│ WHAT do I want?                            │
+│ → SELECT                                   │
+│                                            │
+│ WHERE is the data?                         │
+│ → FROM                                     │
+│                                            │
+│ WHICH ROWS count?                          │
+│ → WHERE                                    │
+│                                            │
+│ DO I need another table?                   │
+│ → JOIN                                     │
+│                                            │
+│ HOW should I group?                        │
+│ → GROUP BY                                 │
+│                                            │
+│ WHICH GROUPS count?                        │
+│ → HAVING                                   │
+│                                            │
+│ DO I need IF/ELSE logic?                   │
+│ → CASE                                     │
+│                                            │
+│ DO I need to find something FIRST?         │
+│ → SUBQUERY                                 │
+│   Use when one query needs the result      │
+│   of another query.                        │
+│                                            │
+│   WHY?                                     │
+│   → Break a problem into steps.            │
+│   → Find a value first, then use it.       │
+│                                            │
+│   HOW?                                     │
+│   → Put a SELECT inside another query.     │
+│                                            │
+│   Example:                                 │
+│   "Find employees earning above the        │
+│    average salary."                        │
+│                                            │
+│   First:  Find average salary              │
+│             ↓                              │
+│   Then:   Find employees above it          │
+│                                            │
+│   → WHERE salary > (SELECT AVG(salary)...) │
+│                                            │
+│   CTE = same idea, but gives that           │
+│   intermediate query a name, making        │
+│   complicated queries easier to read.      │
+│                                            │
+│ CALCULATE across rows?                     │
+│ → WINDOW FUNCTION                          │
+│                                            │
+│ REMOVE duplicates?                         │
+│ → DISTINCT                                 │
+│                                            │
+│ HOW should I sort?                         │
+│ → ORDER BY                                 │
+│                                            │
+│ HOW MANY?                                  │
+│ → LIMIT                                    │
+└────────────────────────────────────────────┘
+
+
+
+-------SUBQUERY------
+
+SUBQUERY = "I need an answer first."
+
+Question:
+"Who earns more than the average?"
+
+        ↓
+
+FIRST → What is the average?
+        ↓
+SECOND → Who is above that average?
+
+
+
+example:
+
+DO I need to find something FIRST?
+→ SUBQUERY
+
+WHY?
+→ The main query needs the result of another query.
+
+HOW?
+→ Put a SELECT inside another SELECT/WHERE/etc.
+
+Example:
+"Customers who spent more than the average"
+
+FIRST → Calculate average spending
+       ↓
+THEN  → Find customers above that number
+
+
+
+
+the logic: 
+MAIN QUERY
+"Who spent more than average?"
+          ↓
+          │
+          ↓
+SUBQUERY
+"What is the average?"
+          ↓
+       700
+          ↓
+MAIN QUERY
+"Find customers spending > 700"
+          ↓
+      Sara, Mike
+
+the result:
+
+SELECT name, total_spent
+FROM customers
+WHERE total_spent > (
+    SELECT AVG(total_spent)
+    FROM customers
+);
+
+
+
+
+
+-----------------------------------------how the query is executed------------------------
+
+How queries are executed:
+
+TABLE
+  ↓
+FILTER rows          → WHERE
+  ↓
+GROUP rows           → GROUP BY
+  ↓
+CALCULATE            → SUM / COUNT / AVG / etc.
+  ↓
+FILTER groups        → HAVING
+  ↓
+SORT                 → ORDER BY
+  ↓
+SHOW columns         → SELECT
+
+
+One subtle thing: you usually write SELECT first, but SQL logically processes the query roughly from FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.
+
+
