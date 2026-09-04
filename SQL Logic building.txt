@@ -1,14 +1,4 @@
---------------SQL QUERY WRITING LOGIC-------------------
-
-SELECT    → What do I want to see?
-FROM      → Where is the data?
-WHERE     → Which rows do I want?
-GROUP BY  → How do I want to group them?
-HAVING    → Which groups do I want?
-ORDER BY  → How should the result be sorted?
-
-
-------------------------------The logic--------------------------------
+---------------------------------------------------------------------------SQL QUERY WRITING LOGIC-----------------------------------------------------------------
 WHAT do I want?        → SELECT
 WHERE is the data?     → FROM
 WHICH ROWS count?      → WHERE
@@ -17,9 +7,22 @@ WHICH GROUPS count?    → HAVING
 HOW to sort?           → ORDER BY
 HOW MANY?              → LIMIT
 
+---------------------------------------------------------------------------The logic w/ joins------------------------------------------------------------------
+
+WHAT do I want?              → SELECT
+WHERE is the main data?      → FROM
+DO I need another table?     → JOIN
+HOW do the tables connect?   → ON
+WHICH ROWS count?            → WHERE
+HOW do I group?              → GROUP BY
+WHICH GROUPS count?          → HAVING
+HOW to sort?                 → ORDER BY
+HOW MANY?                    → LIMIT
+
 
 
 “Give me the top 3 departments whose average salary is above 5000, considering only employees earning more than 3000, with the highest average salary first.”
+
 
 WHAT do I want?
 → Department + average salary
@@ -56,7 +59,7 @@ HOW MANY?
 → LIMIT 3
 
 
-The result: 
+------------------------The result:------------------------
 
 SELECT department, AVG(salary)
 FROM employees
@@ -67,9 +70,69 @@ ORDER BY AVG(salary) DESC
 LIMIT 3;
 
 
+--------------same exammple but with joins-----------------
 
 
------------------------------Expanding the same logic--------------------------------
+WHAT do I want?
+→ Department name + average salary
+→ SELECT
+
+
+WHERE is the data?
+→ employees table
+→ FROM
+
+
+DO I need another table?
+→ Yes, department name is in departments
+→ JOIN
+
+
+HOW do I connect them?
+→ Match department_id
+→ ON employees.department_id = departments.department_id
+
+
+WHICH employees count?
+→ Salary > 3000
+→ WHERE
+
+
+HOW do I group them?
+→ By department
+→ GROUP BY
+
+
+WHICH departments count?
+→ Average salary > 5000
+→ HAVING
+
+
+HOW do I sort?
+→ Highest average salary first
+→ ORDER BY ... DESC
+
+
+HOW MANY?
+→ Top 3
+→ LIMIT
+
+------------------------The result:------------------------
+
+SELECT departments.department_name, AVG(employees.salary)
+FROM employees
+JOIN departments
+    ON employees.department_id = departments.department_id
+WHERE employees.salary > 3000
+GROUP BY departments.department_name
+HAVING AVG(employees.salary) > 5000
+ORDER BY AVG(employees.salary) DESC
+LIMIT 3;
+
+
+
+
+---------------------------------------------------------------------Expanding the same logic---------------------------------------------------------
 
 
 ┌────────────────────────────────────────────┐
@@ -200,7 +263,7 @@ WHERE total_spent > (
 
 
 
------------------------------------------how the query is executed------------------------
+---------------------------------------------------------------------------------how the query is executed------------------------------------------------------
 
 How queries are executed:
 
