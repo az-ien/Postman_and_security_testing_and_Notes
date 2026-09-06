@@ -8,6 +8,16 @@ And remember what each one does:
 WHAT → WHERE → FILTER → GROUP → FILTER GROUPS → SORT
 
 
+🔑 Memorize this
+
+GROUP BY = GROUP the rows
+SUBQUERY = FIND → COMPARE/USE
+CORRELATED = CURRENT ROW → FIND ITS GROUP'S ANSWER → COMPARE
+
+And importantly, they can be used together. A query can have GROUP BY in the outer query and a subquery inside HAVING or WHERE.
+
+
+
 WHAT do I want?        → SELECT
 WHERE is the data?     → FROM
 WHICH ROWS count?      → WHERE
@@ -269,6 +279,21 @@ WHERE total_spent > (
 
 ----------------------------------CORELATED SUBQERY--------------------------------------
 
+
+When you see a subquery problem, ask these questions in order:
+
+1️⃣ Do I need another query first?
+NO → No subquery needed.
+YES → Continue.
+2️⃣ Does the inner answer depend on the current outer row?
+NO → 🟢 NORMAL subquery
+YES → 🔴 CORRELATED subquery
+3️⃣ Look for these clues
+
+Normal → “overall”, “all”, “company average”, “total average”
+Correlated → “their own”, “its own”, “for each”, “respective”, “same category/department”
+
+
 🟢 Normal Subquery
 Problem: Find employees earning more than the overall company average.
 
@@ -330,22 +355,6 @@ product price > its category average
 ---------------------------------------------------------------------------------how the query is executed------------------------------------------------------
 
 How queries are executed:
-
-TABLE
-  ↓
-FILTER rows          → WHERE
-  ↓
-GROUP rows           → GROUP BY
-  ↓
-CALCULATE            → SUM / COUNT / AVG / etc.
-  ↓
-FILTER groups        → HAVING
-  ↓
-SORT                 → ORDER BY
-  ↓
-SHOW columns         → SELECT
-
-
 One subtle thing: you usually write SELECT first, but SQL logically processes the query roughly from FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.
 
 
