@@ -267,6 +267,64 @@ WHERE total_spent > (
 
 
 
+----------------------------------CORELATED SUBQERY--------------------------------------
+
+🟢 Normal Subquery
+Problem: Find employees earning more than the overall company average.
+
+SELECT employee_name, salary
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+
+Logic:
+
+Find one overall average → compare every employee against it.
+ALL employees
+     ↓
+ONE company average
+     ↓
+Compare every employee
+
+
+🔴 Correlated Subquery
+Problem: Find products costing more than the average price of their own category.
+
+SELECT p.product_name,
+       p.price,
+       p.category_id
+FROM products p
+WHERE p.price > (
+    SELECT AVG(p2.price)
+    FROM products p2
+    WHERE p2.category_id = p.category_id
+);
+
+Logic:
+Take current product → find its category average → compare its price.
+
+CURRENT product
+      ↓
+ITS category
+      ↓
+ITS category average
+      ↓
+Compare CURRENT product price
+⭐ The ultimate shortcut
+
+Same answer for everyone? → NORMAL
+Answer changes for each row? → CORRELATED
+
+Normal:
+employee salary > overall average
+
+Correlated:
+product price > its category average
+
+
+
 
 
 ---------------------------------------------------------------------------------how the query is executed------------------------------------------------------
