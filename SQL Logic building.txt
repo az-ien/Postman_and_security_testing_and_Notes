@@ -294,6 +294,9 @@ Normal → “overall”, “all”, “company average”, “total average”
 Correlated → “their own”, “its own”, “for each”, “respective”, “same category/department”
 
 
+
+
+
 🟢 Normal Subquery
 Problem: Find employees earning more than the overall company average.
 
@@ -326,6 +329,20 @@ WHERE p.price > (
     FROM products p2
     WHERE p2.category_id = p.category_id
 );
+
+
+Same products table
+        ↓
+ ┌───────────────┐
+ │       p       │  ← Outer perspective
+ │       p2      │  ← Inner perspective
+ └───────────────┘
+        ↓
+p2 uses information from p
+        ↓
+RELATED ANSWER
+
+
 
 Logic:
 Take current product → find its category average → compare its price.
